@@ -6,25 +6,30 @@ public class Bullet : MonoBehaviour
     private new Rigidbody2D rigidbody2D;
     public float speed;
 
+    // 내가 2d로 추가.
     Vector3 targetPos;
     Vector3 myPos;
-
     Vector3 newPos;
     // Start is called before the first frame update
     private void Awake()
     {
         // 게임 오브젝트에서 Rigidbody 컴포넌트를 찾아 rigidbody2D에 할당
         rigidbody2D = GetComponent<Rigidbody2D>();
+
+        // 2d로 추가.
         targetPos = GameObject.Find("Player").transform.position;
         myPos = transform.position;
     }
 
     private void Start()
     {
+        // 2d로 추가.
         newPos = (targetPos - myPos) * 0.01f;
+
         rigidbody2D.velocity = transform.forward * speed;
         Destroy(gameObject, 3f);
     }
+    // 내가 2d로 수정
     private void Update()
     {
         transform.position = transform.position + newPos;
