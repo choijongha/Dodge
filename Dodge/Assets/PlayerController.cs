@@ -1,40 +1,37 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
 {
-    public Rigidbody2D playerRigidbody2D;
+    private Rigidbody2D playerRigidbody2D;
     public float speed = 8f;
     // Start is called before the first frame update
-    void Start()
+
+    private void Awake()
     {
-        
+        playerRigidbody2D = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.UpArrow) == true)
-        {
-            // 위쪽 방향키 입력이 감지된 경우 y 방향 힘 주기
-            playerRigidbody2D.AddForce(new Vector2(0, speed));
-        }
+        // 수평축과 수직축의 입력값을 감지하여 저장
+        float xInput = Input.GetAxis("Horizontal");
+        float yInput = Input.GetAxis("Vertical");
 
-        if (Input.GetKey(KeyCode.DownArrow) == true)
-        {
-            // 아래 방향키 입력이 감지된 경우 -y 방향 힘 주기
-            playerRigidbody2D.AddForce(new Vector2(0, -speed)); ;
-        }
+        // 실제 이동 속도를 입력값과 이동 속력을 사용해 결정
+        float xSpeed = xInput * speed;
+        float ySpeed = yInput * speed;
 
-        if (Input.GetKey(KeyCode.RightArrow) == true)
-        {
-            // 우측 방향키 입력이 감지된 경우 x 방향 힘 주기
-            playerRigidbody2D.AddForce(new Vector2(speed, 0)); ;
-        }
+        // Vector2 속도를 (xSpeed, ySpeed)로 생성
+        Vector2 newVelocity = new Vector2(xSpeed, ySpeed);
 
-        if(Input.GetKey(KeyCode.LeftArrow) == true)
-        {
-            // 왼 방향키 입력이 감지된 경우 -x 방향 힘 주기
-            playerRigidbody2D.AddForce(new Vector2(-speed, 0)); ;
-        }
+        // 리지드바디의 속도를 newVelocity 할당
+        playerRigidbody2D.velocity = newVelocity;
+    }
+    public void Die()
+    {
+        // 자신의 게임 오브젝트 비활성화
+        gameObject.SetActive(false);
     }
 }
