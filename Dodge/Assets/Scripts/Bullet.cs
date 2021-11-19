@@ -23,8 +23,7 @@ public class Bullet : MonoBehaviour
     {      
         myPos = transform.position;
         // 2d·Î Ãß°¡.
-        newPos = (targetPos - myPos) * 0.01f ;
-        
+        newPos = (targetPos - myPos) * 0.01f;
 
         //rigidbody2D.velocity = transform.forward * speed;
         Destroy(gameObject, 3f);
