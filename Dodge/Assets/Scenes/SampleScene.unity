@@ -935,9 +935,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 949c38a5e45c877439fb1a31ff873dd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameOverText: {fileID: 1476092783}
-  timeText: {fileID: 1720557611}
-  recordText: {fileID: 408998699}
 --- !u!4 &1227783932
 Transform:
   m_ObjectHideFlags: 0
@@ -1136,7 +1133,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1476092784
 RectTransform:
   m_ObjectHideFlags: 0
