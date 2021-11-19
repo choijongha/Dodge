@@ -6,22 +6,23 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject gameOverText;
-    public Text timeText;
-    public Text recordText;
+    private GameObject gameOverText;
+    private Text timeText;
+    private Text recordText;
 
     private float surviveTime;
     private bool isGameOver;
 
-    /*private void Awake()
+    private void Awake()
     {
         gameOverText = GameObject.Find("GameOver Text");
-        timeText = GameObject.Find("TimeText").GetComponent<Text>();
-        recordText = GameObject.Find("RecordText").GetComponent<Text>();
-    }*/
+        timeText = GameObject.Find("Time Text").GetComponent<Text>();
+        recordText = GameObject.Find("Record Text").GetComponent<Text>();
+    }
     // Start is called before the first frame update
     void Start()
     {
+        gameOverText.SetActive(false);
         surviveTime = 0;
         isGameOver = false;
     }
