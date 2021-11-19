@@ -23,7 +23,7 @@ public class Bullet : MonoBehaviour
     {      
         myPos = transform.position;
         // 2d로 추가.
-        newPos = (targetPos - myPos) * 0.01f;
+        newPos = (targetPos - myPos) * 0.01f * speed * Time.deltaTime;
 
         //rigidbody2D.velocity = transform.forward * speed;
         Destroy(gameObject, 3f);
@@ -31,11 +31,15 @@ public class Bullet : MonoBehaviour
     // 내가 2d로 수정
     private void Update()
     {
-        transform.position = transform.position + newPos;
+        transform.position = transform.position + newPos ;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (other.tag == "Wall")
+        {
+            Destroy(gameObject);
+        }
         // 충돌한 상대방 게임 오브젝트가 Player 태그를 가진 경우
         if (other.tag == "Player")
         {

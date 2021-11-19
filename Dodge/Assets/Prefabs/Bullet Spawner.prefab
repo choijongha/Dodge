@@ -98,4 +98,3 @@ MonoBehaviour:
   bulletPrefab: {fileID: 4738714836802181301, guid: 932be4d0aeab34a4e95db2ad87feaf62, type: 3}
   spawnRateMin: 0.5
   spawnRateMax: 2
-  player: {fileID: 3261769715153072644, guid: 92a385d56e5b661428fee81462e1e1a3, type: 3}
